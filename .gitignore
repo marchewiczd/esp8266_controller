@@ -323,3 +323,6 @@ ASALocalRun/
 
 # Arduino
 __vm/
+
+# Secrets
+Secrets.h
