@@ -7,7 +7,7 @@ class ApiHandler
 public:
 	// Initialize API handler
 	// @port: specifies API server what port to run on
-	ApiHandler(int port);
+	ApiHandler(unsigned int port);
 
 	void startWebServer();
 

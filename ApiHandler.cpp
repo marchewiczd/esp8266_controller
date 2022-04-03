@@ -1,6 +1,6 @@
 #include "ApiHandler.h"
 
-ApiHandler::ApiHandler(int port)
+ApiHandler::ApiHandler(unsigned int port)
 	: _apiServer(port)
 {
 	this->prepareServerRouting();
