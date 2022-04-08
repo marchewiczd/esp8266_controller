@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
+#include <vector>
 
 class SerialHandler
 {
@@ -12,6 +13,8 @@ public:
 
 private:
 	String _serialData = "";
+
 	void handleCommand(String command);
+	std::vector<String> parseSerialInput(String command);
 };
 
