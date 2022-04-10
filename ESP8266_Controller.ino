@@ -2,6 +2,7 @@
 #include <WiFiClient.h>
 #include <ESP8266mDNS.h>
 #include <ApiHandler.h>
+#include <SerialHandler.h>
 #include <Secrets.h>
 
 // ********************
@@ -10,12 +11,14 @@
 const char* MDNS_HOST_NAME = "esp8266";
 const unsigned short WIFI_CONNECTION_ATTEMPTY_DELAY_MS = 1000;
 const unsigned long BAUD_RATE = 115200;
+const unsigned int SERVER_PORT = 80;
 
 
 // ********************
 // ***** FIELDS *******
 // ********************
-ApiHandler apiServer(80);
+ApiHandler apiServer(SERVER_PORT);
+SerialHandler serial(BAUD_RATE);
 
 
 // ********************
@@ -36,27 +39,13 @@ void setup(void) {
 
 void loop(void) {
     apiServer.handleClients();
-    readSerial();
+    serial.handleClientWrite();
 }
 
 
 // ********************
 // *** DEFINITIONS ****
 // ********************
-void readSerial() {
-    String receivedSerialMsg;
-
-    if (Serial.available()) {
-        Serial.print("Serial <<< ");
-        // read the incoming byte:
-        while (Serial.available()) {
-            receivedSerialMsg = Serial.read();
-            Serial.print(receivedSerialMsg);
-            if (!Serial.available()) delayMicroseconds(1200);
-        }
-        Serial.println();
-    }
-}
 
 void setupWiFiConnection() {
     Serial.begin(BAUD_RATE);
