@@ -5,6 +5,7 @@
 #include <SerialHandler.h>
 #include <Secrets.h>
 
+
 // ********************
 // **** CONSTANTS *****
 // ********************
@@ -18,7 +19,8 @@ const unsigned int SERVER_PORT = 80;
 // ***** FIELDS *******
 // ********************
 ApiHandler apiServer(SERVER_PORT);
-SerialHandler serial(BAUD_RATE);
+EepromHandler eepromHandler(30);
+SerialHandler serial(BAUD_RATE, &eepromHandler);
 
 
 // ********************

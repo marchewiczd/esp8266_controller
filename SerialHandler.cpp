@@ -5,6 +5,17 @@ SerialHandler::SerialHandler(unsigned int baudRate)
     Serial.begin(baudRate);
 }
 
+SerialHandler::SerialHandler(unsigned int baudRate, EepromHandler* eepromHandler)
+{
+    Serial.begin(baudRate);
+    this->_eepromHandler = eepromHandler;
+}
+
+SerialHandler::~SerialHandler()
+{
+    delete this->_eepromHandler;
+}
+
 void SerialHandler::handleClientWrite()
 {
     byte ch;
@@ -39,15 +50,17 @@ void SerialHandler::handleCommand(String command)
             ESP.restart();
         }
         else {
-            Serial.print("Argument \"");
-            Serial.print(commandWords[1]);
-            Serial.println("\" is not recognized for \"esp\" command.");
+            printInvalidArgumentMessage(0, commandWords);
         }
     }
     else if (commandWords[0].compareTo("help") == 0) {
-        Serial.println("ESP");
-        Serial.println("\trestart - restarts ESP");
+        printHelpMessage();
     }
+#if DEBUG == 1
+    else if (commandWords[0].compareTo("debug") == 0) {
+        handleDebugCommands(commandWords);
+    }
+#endif // DEBUG
     else {
         Serial.print("Command \"");
         Serial.print(commandWords[0]);
@@ -71,4 +84,62 @@ std::vector<String> SerialHandler::parseSerialInput(String command)
     }
 
     return commandWords;
+}
+
+void SerialHandler::handleDebugCommands(std::vector<String> commandWords)
+{
+    if (commandWords[0].compareTo("debug") == 0) {
+        if (commandWords[1].compareTo("eeprom") == 0) {
+            if (commandWords[2].compareTo("write") == 0) {
+                uint8_t address = atoi(commandWords[3].c_str());
+                uint8_t value = atoi(commandWords[4].c_str());
+                uint8_t writeResult = (int)_eepromHandler->Write(address, value);
+                if (writeResult == 0) 
+                    Serial.println("success");
+                else
+                    Serial.println("error");
+            }
+            else if (commandWords[2].compareTo("read") == 0) {
+                uint8_t address = atoi(commandWords[3].c_str());
+                uint8_t readResult = (int)_eepromHandler->Read(address);
+                Serial.println(readResult);
+                    
+            }
+            else if (commandWords[2].compareTo("readAll") == 0) {
+                std::vector<uint8_t> readResult = _eepromHandler->ReadAll();
+                for (int i = 0; i < readResult.size(); i++) {
+                    Serial.print(readResult[i]);
+                    Serial.print(" ");
+                }
+            }
+            else {
+                printInvalidArgumentMessage(1, commandWords);
+            }
+        }
+        else {
+            printInvalidArgumentMessage(0, commandWords);
+        }
+    }
+}
+
+void SerialHandler::printInvalidArgumentMessage(int parentIndex, std::vector<String> commandWords)
+{
+    Serial.print("Argument \"");
+    Serial.print(commandWords[parentIndex + 1]);
+    Serial.print("\" is not recognized for \"");
+    Serial.print(commandWords[parentIndex]);
+    Serial.println("\" command.");
+}
+
+void SerialHandler::printHelpMessage()
+{
+    Serial.println("ESP");
+    Serial.println("\trestart - restarts ESP");
+#if DEBUG == 1
+    Serial.println("debug");
+    Serial.println("\teeprom");
+    Serial.println("\t\twrite {address} {value} - write specific value to a given address");
+    Serial.println("\t\tread {address} - read value from a given address");
+    Serial.println("\t\treadAll - read all values");
+#endif // DEBUG
 }
