@@ -13,6 +13,7 @@ WriteResult EepromHandler::Write(uint8_t address, uint8_t value)
 		return WriteResult::ErrorAddressInvalid;
 
 	uint8_t currentValue = EEPROM.read(address);
+	EEPROM.commit();
 	if (currentValue == value)
 		return WriteResult::SuccessNoUpdateNeeded;
 

@@ -37,7 +37,7 @@ void SerialHandler::handleCommand(String command)
 {
     CommandDetails cmdDetails;
     if (_commandParser.parse(command, AvailableCommands, cmdDetails)) {
-        Action::Perform(cmdDetails.type);
+        Action::Perform(cmdDetails.type, cmdDetails.parameters);
     }
     else {
         Serial.print("Command \"");

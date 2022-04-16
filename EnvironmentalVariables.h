@@ -1,4 +1,4 @@
 #pragma once
 
 #define ENABLE_DEBUG_COMMANDS 1
-#define EEPROM_USED_SIZE 30
+#define EEPROM_AVAILABLE_BYTES 30

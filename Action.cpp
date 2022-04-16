@@ -1,7 +1,7 @@
 #include "Action.h"
 
 
-EepromHandler Action::_eepromHandler(EEPROM_USED_SIZE);
+EepromHandler Action::_eepromHandler(EEPROM_AVAILABLE_BYTES);
 
 void Action::Perform(ActionType type, std::vector<int> parameters)
 {
@@ -26,7 +26,7 @@ void Action::Perform(ActionType type, std::vector<int> parameters)
 
 void Action::InitializeEeprom(EepromHandler& handler)
 {
-	Action::_eepromHandler = handler;
+	
 }
 
 void Action::RestartEsp()
@@ -69,10 +69,20 @@ uint8_t Action::DebugEepromRead(std::vector<int> parameters)
 	if (value == UINT8_MAX)
 		Serial.println(Action::_eepromHandler.DecodeResult(value));
 
+	Serial.println(value);
+
 	return value;
 }
 
 std::vector<uint8_t> Action::DebugEepromReadAll()
 {
-	return Action::_eepromHandler.ReadAll();
+	std::vector<uint8_t> result = Action::_eepromHandler.ReadAll();
+
+	for (int i = 0; i < result.size(); i++) {
+		Serial.print(result[i]);
+		Serial.print(" ");
+	}
+	Serial.println();
+
+	return result;
 }
