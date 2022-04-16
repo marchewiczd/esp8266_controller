@@ -1,20 +1,20 @@
 #include "CommandParser.h"
 
 
-bool CommandParser::parse(String command, std::vector<CmdDetails> cmdDetailsList, CmdDetails& outputDetails)
+bool CommandParser::parse(String command, std::vector<CommandDetails> CommandDetailsList, CommandDetails& outputDetails)
 {
     std::vector<String> splitCommand = split(command);
 
     if (splitCommand.size() == 0)
         return false;
 
-    if (findFirstMatch(cmdDetailsList, splitCommand, outputDetails))
+    if (findFirstMatch(CommandDetailsList, splitCommand, outputDetails))
         return true;
 
     return false;
 }
 
-bool CommandParser::findFirstMatch(std::vector<CmdDetails> commandDetails, std::vector<String> splitCommand, CmdDetails& outputDetails)
+bool CommandParser::findFirstMatch(std::vector<CommandDetails> commandDetails, std::vector<String> splitCommand, CommandDetails& outputDetails)
 {
     std::vector<int> parameters;
 
@@ -30,7 +30,7 @@ bool CommandParser::findFirstMatch(std::vector<CmdDetails> commandDetails, std::
     return false;
 }
 
-bool CommandParser::tryMatchCurrentDetails(CmdDetails& commandDetails, std::vector<String> splitCommand, std::vector<int>& parameters)
+bool CommandParser::tryMatchCurrentDetails(CommandDetails& commandDetails, std::vector<String> splitCommand, std::vector<int>& parameters)
 {
     int cmdCount = commandDetails.commandWords.size();
 
@@ -70,16 +70,4 @@ std::vector<String> CommandParser::split(String command)
     }
 
     return commandWords;
-}
-
-CmdDetails::CmdDetails()
-{
-}
-
-CmdDetails::CmdDetails(CmdType type, std::vector<String> commandWords, int parameterCount)
-{
-    this->type = type;
-    this->commandWords = commandWords;
-    this->parameterCount = parameterCount;
-    this->parameters = parameters;
 }

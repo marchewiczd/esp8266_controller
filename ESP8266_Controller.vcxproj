@@ -21,8 +21,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>
-    </PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -85,7 +84,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\ESP8266_Controller;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WiFi\src;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266mDNS\src;$(ProjectDir)..\libraries\ApiHandler;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WebServer\src;$(ProjectDir)..\libraries\SerialHandler;$(ProjectDir)..\libraries\EepromHandler;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\EEPROM;$(ProjectDir)..\libraries\Secrets;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\avr;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\libb64;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\spiffs;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\umm_malloc;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\variants\nodemcu;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\lwip2\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\libc\xtensa-lx106-elf\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include\c++\4.8.2;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include\c++\4.8.2\xtensa-lx106-elf;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\lib\gcc\xtensa-lx106-elf\4.8.2\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ESP8266_Controller;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WiFi\src;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266mDNS\src;$(ProjectDir)..\libraries\ApiHandler;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WebServer\src;$(ProjectDir)..\libraries\SerialHandler;$(ProjectDir)..\libraries\CommandParser;$(ProjectDir)..\libraries\CommandDetails;$(ProjectDir)..\libraries\ActionType;$(ProjectDir)..\libraries\CommandDescriptions;$(ProjectDir)..\libraries\Action;$(ProjectDir)..\libraries\Secrets;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\avr;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\libb64;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\spiffs;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\umm_malloc;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\variants\nodemcu;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\lwip2\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\libc\xtensa-lx106-elf\include;$(ProjectDir)..\..\..\DOCUME~1\Arduino\ESP826~1;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include\c++\4.8.2;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include\c++\4.8.2\xtensa-lx106-elf;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\xtensa-lx106-elf\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\3.0.4-gcc10.3-1757bed\lib\gcc\xtensa-lx106-elf\4.8.2\include;$(ProjectDir)..\..\..\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\tools\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.ESP8266_Controller.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__ESP8266_esp8266__;__ESP8266_ESP8266__;_VMDEBUG=1;__ets__;ICACHE_FLASH;_GNU_SOURCE;MMU_IRAM_SIZE=0x8000;MMU_ICACHE_SIZE=0x8000;NONOSDK22x_190703=1;F_CPU=80000000L;LWIP_OPEN_SRC;TCP_MSS=536;LWIP_FEATURES=1;LWIP_IPV6=0;ARDUINO=108013;ARDUINO_ESP8266_NODEMCU_ESP12E;ARDUINO_ARCH_ESP8266;LED_BUILTIN=2;FLASHMODE_DIO;ESP8266;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -103,14 +102,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="ActionType.h" />
     <ClInclude Include="ApiHandler.h" />
+    <ClInclude Include="CommandDetails.h" />
     <ClInclude Include="CommandParser.h" />
     <ClInclude Include="Secrets.h" />
     <ClInclude Include="SerialHandler.h" />
     <ClInclude Include="__vm\.ESP8266_Controller.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
     <ClCompile Include="ApiHandler.cpp" />
+    <ClCompile Include="CommandDescriptions.h" />
+    <ClCompile Include="CommandDetails.cpp" />
     <ClCompile Include="CommandParser.cpp" />
     <ClCompile Include="SerialHandler.cpp" />
   </ItemGroup>
@@ -122,7 +127,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties config.Debug.customdebug_esp8266_nodemcuv2_debugger_type="universal" />
+      <UserProperties arduino.upload.port="COM9" config.Debug.customdebug_esp8266_nodemcuv2_debugger_type="universal" custom_esp8266_nodemcuv2_exception="enabled" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
