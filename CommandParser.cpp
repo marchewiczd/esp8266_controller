@@ -3,42 +3,38 @@
 
 bool CommandParser::parse(String command, std::vector<CommandDetails> CommandDetailsList, CommandDetails& outputDetails)
 {
-    std::vector<String> splitCommand = split(command);
+    std::vector<String> splitCommand = Split(command);
 
     if (splitCommand.size() == 0)
         return false;
 
-    if (findFirstMatch(CommandDetailsList, splitCommand, outputDetails))
+    if (FindFirstMatch(CommandDetailsList, splitCommand, outputDetails))
         return true;
 
     return false;
 }
 
-bool CommandParser::findFirstMatch(std::vector<CommandDetails> commandDetails, std::vector<String> splitCommand, CommandDetails& outputDetails)
+bool CommandParser::FindFirstMatch(std::vector<CommandDetails> commandDetails, std::vector<String> splitCommand, CommandDetails& outputDetails)
 {
     std::vector<int> parameters;
 
-    for (int i = 0; i < commandDetails.size(); i++) {
-        if (commandDetails[i].commandWords.size() + commandDetails[i].parameterCount == splitCommand.size()) {
-            if (tryMatchCurrentDetails(commandDetails[i], splitCommand, commandDetails[i].parameters)) {
+    for (int i = 0; i < commandDetails.size(); i++)
+        if (commandDetails[i].commandWords.size() + commandDetails[i].parameterCount == splitCommand.size())
+            if (TryMatchCurrentDetails(commandDetails[i], splitCommand, commandDetails[i].parameters)) {
                 outputDetails = commandDetails[i];
                 return true;
             }
-        }
-    }
 
     return false;
 }
 
-bool CommandParser::tryMatchCurrentDetails(CommandDetails& commandDetails, std::vector<String> splitCommand, std::vector<int>& parameters)
+bool CommandParser::TryMatchCurrentDetails(CommandDetails& commandDetails, std::vector<String> splitCommand, std::vector<int>& parameters)
 {
     int cmdCount = commandDetails.commandWords.size();
 
-    for (int j = 0; j < cmdCount; j++) {
-        if (commandDetails.commandWords[j] != splitCommand[j]) {
+    for (int j = 0; j < cmdCount; j++)
+        if (commandDetails.commandWords[j] != splitCommand[j])
             return false;
-        }
-    }
 
     for (int j = cmdCount; j < cmdCount + commandDetails.parameterCount; j++) {
         try {
@@ -54,7 +50,7 @@ bool CommandParser::tryMatchCurrentDetails(CommandDetails& commandDetails, std::
     return true;
 }
 
-std::vector<String> CommandParser::split(String command)
+std::vector<String> CommandParser::Split(String command)
 {
     std::vector<String> commandWords(1);
     int currentListPosition = 0;
