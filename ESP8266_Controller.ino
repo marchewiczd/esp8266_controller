@@ -3,8 +3,9 @@
 #include <ESP8266mDNS.h>
 #include <ApiHandler.h>
 #include <SerialHandler.h>
+#include <EepromHandler.h>
 #include <Secrets.h>
-
+#include <Action.h>
 
 // ********************
 // **** CONSTANTS *****
@@ -19,8 +20,7 @@ const unsigned int SERVER_PORT = 80;
 // ***** FIELDS *******
 // ********************
 ApiHandler apiServer(SERVER_PORT);
-EepromHandler eepromHandler(30);
-SerialHandler serial(BAUD_RATE, &eepromHandler);
+SerialHandler serial(BAUD_RATE);
 
 
 // ********************

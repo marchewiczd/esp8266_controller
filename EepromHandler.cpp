@@ -1,5 +1,6 @@
 #include "EepromHandler.h"
 
+
 EepromHandler::EepromHandler(int usedAddressesCount)
 {
 	EEPROM.begin(usedAddressesCount);
@@ -21,6 +22,9 @@ WriteResult EepromHandler::Write(uint8_t address, uint8_t value)
 
 uint8_t EepromHandler::Read(uint8_t address)
 {
+	if (address > _usedAddressesCount)
+		return UINT8_MAX;
+
 	return EEPROM.read(address);
 }
 
@@ -32,4 +36,21 @@ std::vector<uint8_t> EepromHandler::ReadAll()
 		readValues[currentReadAddress] = EEPROM.read(currentReadAddress);
 
 	return readValues;
+}
+
+String EepromHandler::DecodeResult(int result)
+{
+	switch (result)
+	{
+		case 0:
+			return "Success: value written.";
+		case 1:
+			return "Success: no value update needed.";
+		case UINT8_MAX:
+			return "Error: invalid address.";
+	}
+
+	String msg = "Error: unrecognized. Received result code: ";
+	msg.concat(result);
+	return msg;
 }
