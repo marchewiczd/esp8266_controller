@@ -64,14 +64,14 @@ void Action::DebugEepromWrite(std::vector<int> parameters)
 
 uint8_t Action::DebugEepromRead(std::vector<int> parameters)
 {
-	uint8_t value = Action::_eepromHandler.Read(parameters[0]);
+	std::pair<uint8_t, EepromResult> result = Action::_eepromHandler.Read(parameters[0]);
+		
+	if (result.second == EepromResult::SuccessValueRead)
+		Serial.println(result.first);
+	else
+		Serial.println(Action::_eepromHandler.DecodeResult(result.second));
 
-	if (value == UINT8_MAX)
-		Serial.println(Action::_eepromHandler.DecodeResult(value));
-
-	Serial.println(value);
-
-	return value;
+	return result.first;
 }
 
 std::vector<uint8_t> Action::DebugEepromReadAll()
