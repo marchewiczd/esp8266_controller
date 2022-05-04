@@ -3,7 +3,9 @@
 #include <ESP8266mDNS.h>
 #include <ApiHandler.h>
 #include <SerialHandler.h>
+#include <EepromHandler.h>
 #include <Secrets.h>
+#include <Action.h>
 
 // ********************
 // **** CONSTANTS *****

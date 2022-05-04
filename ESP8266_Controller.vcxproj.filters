@@ -51,6 +51,12 @@
     <ClInclude Include="ActionType.h">
       <Filter>Header Files\Commands\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="EnvironmentalVariables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EepromHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApiHandler.cpp">
@@ -70,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="CommandDescriptions.h">
       <Filter>Header Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="EepromHandler.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

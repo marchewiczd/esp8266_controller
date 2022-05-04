@@ -10,7 +10,6 @@ class SerialHandler
 {
 public:
 	SerialHandler(unsigned int baudRate);
-
 	void handleClientWrite();
 
 
@@ -20,7 +19,7 @@ private:
 
 	void handleCommand(String command);
 	std::vector<String> parseSerialInput(String command);
-
-
 };
+
+
 
