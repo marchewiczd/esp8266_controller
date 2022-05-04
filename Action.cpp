@@ -24,11 +24,6 @@ void Action::Perform(ActionType type, std::vector<int> parameters)
 	}
 }
 
-void Action::InitializeEeprom(EepromHandler& handler)
-{
-	
-}
-
 void Action::RestartEsp()
 {
 	Serial.println("Restarting...");

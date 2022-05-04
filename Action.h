@@ -19,5 +19,4 @@ private:
 
 public:
 	static void Perform(ActionType type, std::vector<int> parameters = {});
-	static void InitializeEeprom(EepromHandler& eepromHandler);
 };

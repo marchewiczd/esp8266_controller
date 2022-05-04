@@ -10,7 +10,8 @@ enum class EepromResult
 	SuccessNoUpdateNeeded = 1,
 	ErrorValueNegative = 2,
 	ErrorAddressInvalid = 3,
-	SuccessValueRead = 4
+	SuccessValueRead = 4,
+	ErrorCommitFailed = 5
 };
 
 class EepromHandler

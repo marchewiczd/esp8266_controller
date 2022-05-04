@@ -16,12 +16,14 @@ EepromResult EepromHandler::Write(uint8_t address, int value)
 		return EepromResult::ErrorValueNegative;
 
 	uint8_t currentValue = EEPROM.read(address);
-	EEPROM.commit();
 	if (currentValue == value)
 		return EepromResult::SuccessNoUpdateNeeded;
 
 	EEPROM.write(address, value);
-	return EepromResult::SuccessValueWritten;
+	if (EEPROM.commit())
+		return EepromResult::SuccessValueWritten;
+	else
+		return EepromResult::ErrorCommitFailed;
 }
 
 std::pair<uint8_t, EepromResult> EepromHandler::Read(int address)
@@ -61,9 +63,11 @@ String EepromHandler::DecodeResult(int result)
 			return "Error: invalid address.";
 		case 4:
 			return "Success: value read.";
-	}
-
-	String msg = "Error: unrecognized. Received result code: ";
-	msg.concat(result);
-	return msg;
+		case 5:
+			return "Error: write commit failed.";
+		default:
+			String msg = "Error: unrecognized. Result code: ";
+			msg.concat(result);
+			return msg;
+	}	
 }
